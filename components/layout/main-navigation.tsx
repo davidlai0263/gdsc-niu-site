@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { Button } from '@mui/material'
 
 const pages = [
+  { display: 'Home', path: '/' },
   { display: 'News', path: '/posts' },
   { display: 'Event', path: '/' },
   { display: 'About', path: '/' },

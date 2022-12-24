@@ -1,3 +1,24 @@
-function AllPostPage() {}
+import { GetStaticProps } from 'next'
+import AllPost from '../../components/posts/all-posts'
+import { PostDataType, getAllPosts } from '../../lib/posts-util'
+
+function AllPostPage(props: { posts: PostDataType[] }) {
+  return (
+    <>
+      <h1>All Posts</h1>
+      <AllPost posts={props.posts} />
+    </>
+  )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allPosts = getAllPosts()
+  return {
+    props: {
+      posts: allPosts,
+    },
+    revalidate: 60,
+  }
+}
 
 export default AllPostPage
