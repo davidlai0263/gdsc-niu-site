@@ -54,7 +54,7 @@ function Intro() {
           <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#4586F3' }} href={'/events'} LinkComponent={Link}>
             <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>EVENTS</Typography>
           </ButtonBase>
-          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#EB4334' }} href={'/news'} LinkComponent={Link}>
+          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#EB4334' }} href={'/posts'} LinkComponent={Link}>
             <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>NEWS</Typography>
           </ButtonBase>
           <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#FBBD06' }} href={'/about'} LinkComponent={Link}>
