@@ -6,7 +6,7 @@ function AllPost(props: { posts: PostDataType[] }) {
   return (
     <section>
       <Box sx={{ p: { md: '1rem 4rem 1rem 4rem', xs: '1rem 2rem 1rem 2rem' } }}>
-        <h1 style={{textAlign: 'center',fontSize:'36px'}}>All Posts</h1>
+        <h1 style={{ textAlign: 'center' }}>All Posts</h1>
         <PostsGrid posts={props.posts} />
       </Box>
     </section>
