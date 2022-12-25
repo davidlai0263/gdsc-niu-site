@@ -4,7 +4,7 @@ import { PostDataType } from '../../lib/posts-util'
 function Post(props: { posts: PostDataType[] }) {
   return (
     <section>
-      <h2>News</h2>
+      <h2 style={{marginLeft: '64px'}}>News</h2>
       <PostsGrid posts={props.posts} />
     </section>
   )

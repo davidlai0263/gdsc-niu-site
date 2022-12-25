@@ -32,7 +32,7 @@ function ResponsiveAppBar() {
   }
 
   return (
-    <AppBar component="nav" color="inherit">
+    <AppBar component="nav" color="inherit" position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
