@@ -1,5 +1,6 @@
-import { Box, ButtonBase, Card, Chip, Divider, Typography } from '@mui/material'
+import { Box, ButtonBase, Chip, Typography } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const welcomeTextStyle = {
   fontSize: 24,
@@ -50,17 +51,17 @@ function Intro() {
           <img src={'/cover.jpg'} alt="Background Image" style={{ objectFit: 'cover', objectPosition: 'left', overflow: 'hidden' }} />
         </Box>
         <Box sx={{ display: 'flex' }}>
-          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#4586F3' }}>
-            <Typography color="white" sx={{ fontFamily: 'Open Sans', fontSize: 22 }}>EVENTS</Typography>
+          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#4586F3' }} href={'/events'} LinkComponent={Link}>
+            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>EVENTS</Typography>
           </ButtonBase>
-          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#EB4334' }}>
-            <Typography color="white" sx={{ fontFamily: 'Open Sans', fontSize: 22 }}>BLOG</Typography>
+          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#EB4334' }} href={'/posts'} LinkComponent={Link}>
+            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>NEWS</Typography>
           </ButtonBase>
-          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#FBBD06' }}>
-            <Typography color="white" sx={{ fontFamily: 'Open Sans', fontSize: 22 }}>ABOUT</Typography>
+          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#FBBD06' }} href={'/about'} LinkComponent={Link}>
+            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>ABOUT</Typography>
           </ButtonBase>
-          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#35AA53' }}>
-            <Typography color="white" sx={{ fontFamily: 'Open Sans', fontSize: 22 }}>SOCIAL</Typography>
+          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#35AA53' }} href={'/contact'} LinkComponent={Link}>
+            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>CONTACT</Typography>
           </ButtonBase>
         </Box>
       </Box>

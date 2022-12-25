@@ -10,13 +10,12 @@ import Container from '@mui/material/Container'
 import ButtonBase from '@mui/material/ButtonBase'
 import MenuItem from '@mui/material/MenuItem'
 import Link from 'next/link'
-import { Button } from '@mui/material'
 
 const pages = [
   { display: 'Home', path: '/' },
   { display: 'News', path: '/posts' },
   { display: 'Event', path: '/' },
-  { display: 'About', path: '/' },
+  { display: 'About', path: '/about' },
   { display: 'Contact', path: '/contact' },
 ]
 
@@ -49,10 +48,10 @@ function ResponsiveAppBar() {
           </Box>
           {/* Desktop */}
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' , height: 70} }}>
             {/* Menu鈕 */}
 
-            <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
+            <IconButton sx={{width: 70}} aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
               <MenuIcon />
             </IconButton>
             {/* Menu清單 */}
@@ -84,9 +83,9 @@ function ResponsiveAppBar() {
                 </Link>
               ))}
             </Menu>
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{position: 'absolute', left: '50%', transform:'translateX(-50%)'}}>
               <Link href="/">
-                <img src={'/gdscniu.svg'} alt="GDSC NIU Logo" height={70} />
+                <img src={'/gdscniu.svg'} alt="GDSC NIU Logo" height={70}/>
               </Link>
             </Box>
           </Box>

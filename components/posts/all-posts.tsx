@@ -1,5 +1,5 @@
 import { PostDataType } from '../../lib/posts-util'
-import PostsGrid from './posts.grid'
+import PostsGrid from './posts-grid'
 import { Box } from '@mui/system'
 
 function AllPost(props: { posts: PostDataType[] }) {

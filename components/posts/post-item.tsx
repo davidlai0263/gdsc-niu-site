@@ -20,13 +20,13 @@ function PostItem(props: { post: PostDataType }) {
         <CardActionArea href={linkPath} LinkComponent={Link}>
           <CardMedia sx={{ height: 140 }} image={imagePath} title="green iguana" />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" noWrap>
               {title}
             </Typography>
             <Typography gutterBottom variant="body2" component="div">
               {formattedDate}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" height={50}>
               {excerpt}
             </Typography>
           </CardContent>
