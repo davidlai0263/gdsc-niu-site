@@ -1,6 +1,6 @@
 import { Fragment, ReactNode, useContext } from 'react'
 import ResponsiveAppBar from './main-navigation'
-import Head from 'next/head'
+import Head from 'next/head'  
 
 function Layout(props: { children: ReactNode }) {
   return (
