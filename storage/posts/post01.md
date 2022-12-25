@@ -31,7 +31,7 @@ isPin: true
 ## 產品設計
 
 > 賴
-> <img src="https://dotblogsfile.blob.core.windows.net/user/mysticlin/162873c3-1c25-4145-baaa-df9cae3307c5/1507813293_97106.png" width="300px"><br>△ 軟體系統產品的進化</img>
+> <img src="https://dotblogsfile.blob.core.windows.net/user/mysticlin/162873c3-1c25-4145-baaa-df9cae3307c5/1507813293_97106.png" width="300px"><br>軟體系統產品的進化</img>
 
 一個好的產品，都是從一個個單一的程式慢慢累積而成，將不同的程式以不同的組合結合再一起，就會有許多不一樣的使用場景和價值，上面這張圖是軟體開發的不同層次，
 

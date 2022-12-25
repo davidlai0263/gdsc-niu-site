@@ -13,6 +13,7 @@ function AllPostPage(props: { posts: PostDataType[] }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = getAllPosts()
+  //TODO check revalidate time
   return {
     props: {
       posts: allPosts,

@@ -14,6 +14,7 @@ function HomePage(props: { posts: PostDataType[] }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const pinPosts = getPinPosts()
+  //TODO check revalidate time
   return {
     props: {
       posts: pinPosts,

@@ -5,7 +5,7 @@ function PostHeader(props: { title: string; img: string }) {
   return (
     <header>
       <h1>{title}</h1>
-      <Image src={img} alt={title} height={200} width={150} />
+      <Image src={img} alt={title} height={200} width={200} />
     </header>
   )
 }

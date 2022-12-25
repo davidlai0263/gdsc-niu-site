@@ -14,19 +14,23 @@ export interface PostDataType {
   content: string
 }
 
-function getPostData(fileName: string) {
-  const filePath = path.join(postDirectory, fileName)
+export function getPostFiles() {
+  return fs.readdirSync(postDirectory)
+}
+
+export function getPostData(postIdentifier: string) {
+  const postSlug = postIdentifier.replace(/\.md$/, '')
+  const filePath = path.join(postDirectory, `${postSlug}.md`)
   const fileContent = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContent)
 
-  const postSlug = fileName.replace(/\.md$/, '')
   const postData = { slug: postSlug, ...data, content } as PostDataType
 
   return postData
 }
 
 export function getAllPosts() {
-  const postFiles = fs.readdirSync(postDirectory)
+  const postFiles = getPostFiles()
   const allPosts = postFiles.map((postFile) => getPostData(postFile))
   const sortedPots = allPosts.sort((a, b) => (a.date > b.date ? -1 : 1))
 

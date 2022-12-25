@@ -15,7 +15,7 @@ function PostItem(props: { post: PostDataType }) {
   const linkPath = `/posts/${slug}`
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 440, textAlign: 'center' }}>
       <CardActionArea href={linkPath} LinkComponent={Link}>
         <CardMedia sx={{ height: 140 }} image={imagePath} title="green iguana" />
         <CardContent>
