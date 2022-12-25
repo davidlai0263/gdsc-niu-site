@@ -67,3 +67,11 @@ a {
     color-scheme: dark;
   }
 } */
+
+:root {
+  font-family: 'Open Sans';
+}
+
+body {
+  margin: 0;
+}

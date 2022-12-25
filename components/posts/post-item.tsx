@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography } from '@mui/material'
+import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography, Box } from '@mui/material'
 import { PostDataType } from '../../lib/posts-util'
 
 function PostItem(props: { post: PostDataType }) {
@@ -15,22 +15,25 @@ function PostItem(props: { post: PostDataType }) {
   const linkPath = `/posts/${slug}`
 
   return (
-    <Card sx={{ maxWidth: 440, textAlign: 'center' }}>
-      <CardActionArea href={linkPath} LinkComponent={Link}>
-        <CardMedia sx={{ height: 140 }} image={imagePath} title="green iguana" />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography gutterBottom variant="body2" component="div">
-            {formattedDate}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {excerpt}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <Box sx={{ display: 'flex', justifyContent:'center'}}>
+      <Card sx={{width:'100%', maxWidth: 440, textAlign: 'center' }}>
+        <CardActionArea href={linkPath} LinkComponent={Link}>
+          <CardMedia sx={{ height: 140 }} image={imagePath} title="green iguana" />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {title}
+            </Typography>
+            <Typography gutterBottom variant="body2" component="div">
+              {formattedDate}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {excerpt}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Box>
+
   )
 }
 

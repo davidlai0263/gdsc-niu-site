@@ -9,6 +9,7 @@ function Layout(props: { children: ReactNode }) {
         <title>NIU GDSC</title>
         <meta name="description" content="National Ilan University, Google Developer Student Club, 國立宜蘭大學, 資訊工程系, 學生開發者社群" />
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet" />
       </Head>
       <ResponsiveAppBar />
       <main>{props.children}</main>
