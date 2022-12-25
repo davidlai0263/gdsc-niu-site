@@ -59,8 +59,8 @@ function About() {
 function AboutGrid() {
     return (
         <Grid container rowSpacing={5} spacing={4} m={1} width='100%' maxWidth={1200}>
-            {organizers.map((item)=>{
-                return <Grid xs={12} md={3}>
+            {organizers.map((item, index)=>{
+                return <Grid xs={12} md={3} key={`organizer-grid-${index}`}>
                 <Box
                     display='flex'
                     justifyContent='center'
