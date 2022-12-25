@@ -32,7 +32,7 @@ function ResponsiveAppBar() {
   }
 
   return (
-    <AppBar component="nav" color="inherit">
+    <AppBar component="nav" color="inherit" position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -42,7 +42,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end' }}>
             {pages.map((page) => (
-              <ButtonBase key={page.path} href={page.path} LinkComponent={Link} sx={{ color: '#5F6368', height: 70, width: 100, fontSize: 16}}>
+              <ButtonBase key={`nav-base-button-${page.display}-${page.path}`} href={page.path} LinkComponent={Link} sx={{ color: '#5F6368', height: 70, width: 100, fontSize: 16 }}>
                 {page.display}
               </ButtonBase>
             ))}
@@ -75,7 +75,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <Link key={page.path} href={page.path} style={{ textDecoration: 'none' }}>
+                <Link key={`nav-menu-item-${page.display}-${page.path}`} href={page.path} style={{ textDecoration: 'none' }}>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center" sx={{ color: '#5F6368' }}>
                       {page.display}
