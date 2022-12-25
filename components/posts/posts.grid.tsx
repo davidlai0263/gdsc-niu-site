@@ -6,10 +6,10 @@ function PostsGrid(props: { posts: PostDataType[] }) {
   const { posts } = props
 
   return (
-    <Grid container spacing={4} m={1}>
+    <Grid container rowSpacing={5} spacing={4} m={1}>
       {posts.map((post) => (
         <Grid key={post.slug} xs={12} md={4}>
-          <PostItem post={post}/>
+          <PostItem post={post} />
         </Grid>
       ))}
     </Grid>

@@ -5,7 +5,6 @@ import { PostDataType, getAllPosts } from '../../lib/posts-util'
 function AllPostPage(props: { posts: PostDataType[] }) {
   return (
     <>
-      <h1>All Posts</h1>
       <AllPost posts={props.posts} />
     </>
   )

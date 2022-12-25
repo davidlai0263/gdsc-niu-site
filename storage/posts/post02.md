@@ -1,8 +1,8 @@
 ---
-title: Tensorflow
-date: '2022-12-15'
+title: React Markdown(Typescript)
+date: '2022-12-20'
 image: 'img01.webp'
-excerpt: '從 0 - 100 了解 Tensorflow'
+excerpt: '以 Typescript 撰寫的React Markdown 範例'
 isPin: true
 ---
 

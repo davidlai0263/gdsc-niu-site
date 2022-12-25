@@ -45,7 +45,7 @@ function PostContent(props: { post: PostDataType }) {
 
   return (
     <article>
-      <Box p={'5% 15% 5% 15%'}>
+      <Box sx={{ p: { xl: '4rem 20rem', md: '4rem 10rem', sm: '3rem', xs: '1.5rem' } }}>
         <PostHeader title={title} img={imagePath} />
         <ReactMarkdown components={customComponent}>{content}</ReactMarkdown>
       </Box>
