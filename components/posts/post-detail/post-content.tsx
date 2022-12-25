@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import PostHeader from './post-header'
 import { PostDataType } from '../../../lib/posts-util'
 import Image from 'next/image'
@@ -47,7 +48,9 @@ function PostContent(props: { post: PostDataType }) {
     <article>
       <Box sx={{ p: { xl: '4rem 20rem', md: '4rem 10rem', sm: '3rem', xs: '1.5rem' } }}>
         <PostHeader title={title} img={imagePath} />
-        <ReactMarkdown components={customComponent}>{content}</ReactMarkdown>
+        <ReactMarkdown components={customComponent} rehypePlugins={[rehypeRaw]}>
+          {content}
+        </ReactMarkdown>
       </Box>
     </article>
   )
