@@ -42,7 +42,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end' }}>
             {pages.map((page) => (
-              <ButtonBase key={page.path} href={page.path} LinkComponent={Link} sx={{ color: '#5F6368', height: 70, width: 100, fontSize: 16, fontFamily: '"Roboto","Helvetica","Arial",sans-serif' }}>
+              <ButtonBase key={page.path} href={page.path} LinkComponent={Link} sx={{ color: '#5F6368', height: 70, width: 100, fontSize: 16}}>
                 {page.display}
               </ButtonBase>
             ))}
