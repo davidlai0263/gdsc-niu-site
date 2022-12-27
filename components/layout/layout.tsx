@@ -14,14 +14,26 @@ function Layout(props: { children: ReactNode }) {
 
         {/* <!-- Google tag (gtag.js) --> */}
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-RGQQK3H2Z5"></Script>
-        <Script src='../google-analyzer/google-tag.js'></Script>
-        <Script src='../google-analyzer/google-tag-manager.js'></Script>
 
+        <Script dangerouslySetInnerHTML={{__html:`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RGQQK3H2Z5');`}}/>
+        <Script dangerouslySetInnerHTML={{
+          __html: `<!-- Google Tag Manager -->
+          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-MWV4WWJ');</script>
+          <!-- End Google Tag Manager -->`
+        }}/>
       </Head>
-      {/* <!-- Google Tag Manager (noscript) --> */}
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWV4WWJ"
-        height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
-      {/* <!-- End Google Tag Manager (noscript) --> */}
+      <noscript dangerouslySetInnerHTML={{__html: `<!-- Google Tag Manager (noscript) -->
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWV4WWJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+<!-- End Google Tag Manager (noscript) -->`}}/>
       <ResponsiveAppBar />
       <main>{props.children}</main>
     </>
