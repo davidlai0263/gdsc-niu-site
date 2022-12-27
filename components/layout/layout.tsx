@@ -13,15 +13,15 @@ function Layout(props: { children: ReactNode }) {
         <link href="https://fonts.googleapis.com/css2?family=Google+Sans" rel="stylesheet" />
       </Head>
       {/* <!-- Google tag (gtag.js) --> */}
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-RGQQK3H2Z5"></Script>
+      <Script id='google-tag-manager-async' async src="https://www.googletagmanager.com/gtag/js?id=G-RGQQK3H2Z5"></Script>
 
-      <Script dangerouslySetInnerHTML={{
+      <Script id='google-tag' dangerouslySetInnerHTML={{
         __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
 gtag('config', 'G-RGQQK3H2Z5');`}} />
-      <Script id="google-tag-manager" strategy="afterInteractive" dangerouslySetInnerHTML={{
+      <Script id="google-tag-manager-js" strategy="afterInteractive" dangerouslySetInnerHTML={{
         __html: `<!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
