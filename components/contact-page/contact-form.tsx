@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField'
 function ContactForm() {
   return (
     <section>
-      <Typography variant="h3" sx={{ m: 2, textAlign: 'center' }}>
+      <Typography variant="h4" component="h2" sx={{ m: 2, textAlign: 'center' }}>
         Contact Us
       </Typography>
       <Box display="flex" justifyContent="center">

@@ -49,7 +49,7 @@ const organizers = new Array<Organizer>(
 function About() {
   return (
     <Box>
-      <Typography variant="h3" sx={{ m: 2, textAlign: 'center' }}>
+      <Typography variant="h4" component="h2" sx={{ m: 2, textAlign: 'center' }}>
         Organizers
       </Typography>
       <Box display="flex" justifyContent="center">
