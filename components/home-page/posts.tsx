@@ -1,12 +1,14 @@
 import PostsGrid from '../posts/posts-grid'
 import { PostDataType } from '../../lib/posts-util'
-import { Box, Divider } from '@mui/material'
+import { Box, Divider, Typography } from '@mui/material'
 
 function Post(props: { posts: PostDataType[] }) {
   return (
     <section>
-      <Box sx={{ p: { md: '1rem 4rem 1rem 4rem', xs: '1rem 2rem 1rem 2rem' } }}>
-        <h2>News</h2>
+      <Box sx={{ p: { md: '1rem 4rem', xs: '1rem 2rem' } }}>
+        <Typography variant="h3" sx={{ pt: 1, textAlign: 'center' }}>
+          News
+        </Typography>
         <Divider />
 
         <PostsGrid posts={props.posts} />
