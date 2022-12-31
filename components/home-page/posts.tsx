@@ -6,7 +6,7 @@ function Post(props: { posts: PostDataType[] }) {
   return (
     <section>
       <Box sx={{ p: { md: '1rem 4rem', xs: '1rem 2rem' } }}>
-        <Typography variant="h3" sx={{ pt: 1, textAlign: 'center' }}>
+        <Typography variant="h4" sx={{ pt: 1, pb: 1, textAlign: 'center' }}>
           News
         </Typography>
         <Divider />

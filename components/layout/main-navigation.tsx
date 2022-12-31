@@ -86,7 +86,7 @@ function ResponsiveAppBar() {
             </Menu>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', alignItems: 'center' }}>
               <Link href="/">
-                <img src={'/gdscniu.svg'} alt="GDSC NIU Logo" height={70} />
+                <img src={'/gdscniu.svg'} alt="GDSC NIU Logo" width="100%" />
               </Link>
             </Box>
           </Box>

@@ -1,26 +1,18 @@
 import { Box, ButtonBase, Chip, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-
-const welcomeTextStyle = {
-  fontSize: 24,
-  my: 1,
-}
-const welcomeTextStyleXs = {
-  fontSize: 24,
-  mt: 1,
-}
+import coverPic from '../../public/cover.jpg'
 
 function Intro() {
   return (
     <>
-      <Box sx={{ display: { xs: 'none', md: 'block' }, m: 0, p: 0 }}>
-        <Box sx={{ display: 'flex', height: '80vh' }}>
+      <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', m: 0, p: 0 }}>
+        <Box sx={{ display: 'flex' }}>
           <Box
             bgcolor="white"
             sx={{
               width: '30vw',
-              height: '80vh',
+              maxWidth: '432px',
             }}
           >
             <img src={'/gdscniu_border.svg'} alt="GDSC NIU Logo with border" />
@@ -31,43 +23,56 @@ function Intro() {
                 sx={{
                   color: 'white',
                   bgcolor: '#4586F3',
+                  mr: 2,
+                  ml: 2,
                 }}
               ></Chip>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-              <Typography sx={welcomeTextStyle}>歡迎來到</Typography>
-              <Typography sx={welcomeTextStyle}>國立宜蘭大學</Typography>
+              <Typography variant="h5" sx={{ my: 1 }}>
+                歡迎來到
+              </Typography>
+              <Typography variant="h5" sx={{ my: 1 }}>
+                國立宜蘭大學
+              </Typography>
               <Box display="flex">
-                <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#4586F3', fontWeight: 'bold' } }}>Google</Typography>
-                <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#EB4334', fontWeight: 'bold' } }}>Developer</Typography>
+                <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#4586F3', fontWeight: 'bold' } }}>
+                  Google
+                </Typography>
+                <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#EB4334', fontWeight: 'bold' } }}>
+                  Developer
+                </Typography>
               </Box>
               <Box display="flex">
-                <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#FBBD06', fontWeight: 'bold' } }}>Student</Typography>
-                <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#35AA53', fontWeight: 'bold' } }}>Clubs</Typography>
+                <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#FBBD06', fontWeight: 'bold' } }}>
+                  Student
+                </Typography>
+                <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#35AA53', fontWeight: 'bold' } }}>
+                  Clubs
+                </Typography>
               </Box>
-              <Typography sx={{ ...welcomeTextStyle, mt: 10, fontWeight: 'bold' }}>網站建置中 敬請期待！</Typography>
             </Box>
           </Box>
-          <img src={'/cover.jpg'} alt="Background Image" style={{ objectFit: 'cover', objectPosition: 'left', overflow: 'hidden' }} />
+          <Image src={coverPic} alt="Background Image" style={{ width: '100%', height: '80vh', objectFit: 'cover', overflow: 'hidden' }} />
         </Box>
         <Box sx={{ display: 'flex' }}>
           <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#4586F3' }} href={'/#events'} LinkComponent={Link}>
-            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>
+            <Typography variant="h5" component="h2" color="white">
               EVENTS
             </Typography>
           </ButtonBase>
           <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#EB4334' }} href={'/posts'} LinkComponent={Link}>
-            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>
+            <Typography variant="h5" component="h2" color="white">
               NEWS
             </Typography>
           </ButtonBase>
           <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#FBBD06' }} href={'/about'} LinkComponent={Link}>
-            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>
+            <Typography variant="h5" component="h2" color="white">
               ABOUT
             </Typography>
           </ButtonBase>
           <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#35AA53' }} href={'/contact'} LinkComponent={Link}>
-            <Typography color="white" sx={{ fontFamily: 'Google Sans', fontSize: 22 }}>
+            <Typography variant="h5" component="h2" color="white">
               CONTACT
             </Typography>
           </ButtonBase>
@@ -80,17 +85,28 @@ function Intro() {
           <img src={'/gdscniu_border.svg'} alt="GDSC NIU Logo with border" />
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <Typography sx={welcomeTextStyleXs}>歡迎來到</Typography>
-          <Typography sx={welcomeTextStyleXs}>國立宜蘭大學</Typography>
+          <Typography variant="h5" sx={{ my: 1 }}>
+            歡迎來到
+          </Typography>
+          <Typography variant="h5" sx={{ my: 1 }}>
+            國立宜蘭大學
+          </Typography>
           <Box display="flex">
-            <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#4586F3', fontWeight: 'bold' } }}>Google</Typography>
-            <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#EB4334', fontWeight: 'bold' } }}>Developer</Typography>
+            <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#4586F3', fontWeight: 'bold' } }}>
+              Google
+            </Typography>
+            <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#EB4334', fontWeight: 'bold' } }}>
+              Developer
+            </Typography>
           </Box>
           <Box display="flex">
-            <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#FBBD06', fontWeight: 'bold' } }}>Student</Typography>
-            <Typography sx={{ ...welcomeTextStyle, ':first-letter': { color: '#35AA53', fontWeight: 'bold' } }}>Clubs</Typography>
+            <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#FBBD06', fontWeight: 'bold' } }}>
+              Student
+            </Typography>
+            <Typography variant="h5" sx={{ mt: 1, ':first-letter': { color: '#35AA53', fontWeight: 'bold' } }}>
+              Clubs
+            </Typography>
           </Box>
-          <Typography sx={{ ...welcomeTextStyleXs, mt: 4, fontWeight: 'bold' }}>網站建置中 敬請期待！</Typography>
         </Box>
       </Box>
     </>

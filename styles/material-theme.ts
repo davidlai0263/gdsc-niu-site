@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles'
-import { Roboto } from '@next/font/google'
+import { Noto_Sans_TC, Open_Sans } from '@next/font/google'
 
-export const themeFont = Roboto({ weight: '400' })
+export const themeFont = Open_Sans({ subsets: ['latin'] })
 const theme = createTheme({
   typography: {
     fontFamily: themeFont.style.fontFamily,

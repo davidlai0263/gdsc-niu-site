@@ -5,7 +5,7 @@ import { Box, Typography } from '@mui/material'
 function AllPost(props: { posts: PostDataType[] }) {
   return (
     <section>
-      <Box sx={{ p: { md: '1rem 4rem 1rem 4rem', xs: '1rem 2rem 1rem 2rem' } }}>
+      <Box sx={{ p: { md: '2rem 4rem ', xs: '2rem' } }}>
         <Typography variant="h4" component="h2" sx={{ textAlign: 'center' }}>
           All Posts
         </Typography>
