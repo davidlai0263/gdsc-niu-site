@@ -46,8 +46,19 @@ function ContactForm() {
         <Typography variant="h4" component="h2" sx={{ textAlign: 'center' }}>
           Contact Us
         </Typography>
-        <Box display="flex" mt={2} justifyContent="center">
-          <Box component="form" onSubmit={sendMessageHandler} noValidate autoComplete="off" display="flex" flexDirection="column" width="100%" maxWidth="500px" alignItems="center">
+        <Box display="flex" mt={2} alignItems="center"
+        flexDirection='column'
+          component="form"
+          onSubmit={sendMessageHandler}
+          noValidate
+          autoComplete="off"
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            width="100%"
+            maxWidth="500px"
+            alignItems="center">
             <TextField
               type="email"
               value={email.value}
@@ -58,7 +69,7 @@ function ContactForm() {
               onChange={(event) => {
                 setEmail((prev) => ({ ...prev, value: event.target.value }))
               }}
-              sx={{ flex: 1, mt: 3, height: '4rem', width: '100%' }}
+              sx={{ flex:1, mt: 3, height: '4rem', width: '100%' }}
             />
             <TextField
               type="name"
@@ -70,7 +81,7 @@ function ContactForm() {
               onChange={(event) => {
                 setName((prev) => ({ ...prev, value: event.target.value }))
               }}
-              sx={{ flex: 1, mt: 3, height: '4rem', width: '100%' }}
+              sx={{ flex:1, mt: 3, height: '4rem', width: '100%' }}
             />
             <TextField
               type="text"
@@ -83,12 +94,12 @@ function ContactForm() {
                 setMessage((prev) => ({ ...prev, value: event.target.value }))
               }}
               multiline
-              sx={{ flex: 1, mt: 3, height: '4rem', width: '100%' }}
+              sx={{ flex:1, mt: 3, height: '4rem', width: '100%' }}
             />
-            <Button type="submit" variant="contained" sx={{ mt: 3, width: '100%' }}>
-              <Typography>送出</Typography>
-            </Button>
           </Box>
+          <Button type="submit" variant="contained" sx={{ mt: 3, width: '100%', maxWidth:"500px" }}>
+            <Typography>送出</Typography>
+          </Button>
         </Box>
       </Box>
     </section>
