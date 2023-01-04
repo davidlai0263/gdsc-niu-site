@@ -1,4 +1,5 @@
 import { Typography, Box, TextField, Button } from '@mui/material'
+import LoadingButton from '@mui/lab/LoadingButton'
 import { FormEvent, useState } from 'react'
 import { green, red, grey } from '@mui/material/colors'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
@@ -10,6 +11,7 @@ function ContactForm() {
   const [name, setName] = useState<{ value: string; error: boolean }>({ value: '', error: false })
   const [message, setMessage] = useState<{ value: string; error: boolean }>({ value: '', error: false })
   const [isSubmit, setIsSubmit] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   function sendMessageHandler(event: FormEvent) {
     event.preventDefault()
@@ -33,7 +35,7 @@ function ContactForm() {
     }
 
     if (email.value.includes('@') && name.value && message.value) {
-      console.log('send post')
+      setIsLoading(true)
       fetch('/api/contact', {
         method: 'POST',
         body: JSON.stringify({
@@ -42,6 +44,7 @@ function ContactForm() {
           message: message.value,
         }),
       }).then((response) => {
+        setIsLoading(false)
         if (response.status === 201) {
           setIsSubmit(1)
         } else {
@@ -140,9 +143,9 @@ function ContactForm() {
               sx={{ flex: 1, mt: 3, height: '4rem', width: '100%' }}
             />
           </Box>
-          <Button type="submit" variant="contained" sx={{ mt: 3, width: '100%', maxWidth: '500px' }}>
+          <LoadingButton loading={isLoading} type="submit" variant="contained" sx={{ mt: 3, width: '100%', maxWidth: '500px' }}>
             <Typography>送出</Typography>
-          </Button>
+          </LoadingButton>
         </Box>
       </Box>
     </section>
