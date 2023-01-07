@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../prisma/prisma'
+import { getAllPosts } from '../../../lib/posts-util'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   // await prisma.users.deleteMany()
@@ -31,17 +32,21 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   // res.status(200).json(createMany)
 
-  const find = await prisma.users.update({
-    where: { email: 'peilun1128@gmail.com' },
-    data: {
-      userpreference: {
-        update: {
-          emailUpdates: true,
-        },
-      },
-    },
-  })
-  res.status(200).json(find)
+  // const find = await prisma.users.update({
+  //   where: { email: 'peilun1128@gmail.com' },
+  //   data: {
+  //     userpreference: {
+  //       update: {
+  //         emailUpdates: true,
+  //       },
+  //     },
+  //   },
+  // })
+  // res.status(200).json(find)
+
+  // res.status(200).json(await getPostData('BkYkUj4Ki'))
+
+  res.status(200).json(await getAllPosts())
 }
 
 export default handler

@@ -1,30 +1,30 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import PostContent from '../../components/posts/post-detail/post-content'
-import { getPostData, getPostFiles, PostDataType } from '../../lib/posts-util'
+import { getPostData, getShortId } from '../../lib/posts-util'
+import { posts as PostType } from '@prisma/client'
 
-function PostDetailPage(props: { post: PostDataType }) {
+function PostDetailPage(props: { post: PostType }) {
   return <PostContent post={props.post} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postFilenames = getPostFiles()
-  const slugs = postFilenames.map((filename) => filename.replace(/\.md$/, ''))
+  const shortId = await getShortId()
 
   return {
-    paths: slugs.map((slug) => ({ params: { slug: slug } })),
+    paths: shortId.map((item) => ({ params: { shortId: item.shortId } })),
     fallback: false,
   }
 }
 
 export const getStaticProps: GetStaticProps = async (content: GetStaticPropsContext) => {
   const { params } = content
-  const slug = params?.slug
-  const postData = getPostData(slug as string)
+  const shortId = params?.shortId
+  const postData = await getPostData(shortId as string)
 
   //TODO check revalidate time
   return {
     props: { post: postData },
-    revalidate: 60,
+    revalidate: 7200,
   }
 }
 

@@ -8,23 +8,22 @@ datasource db {
 }
 
 model users {
-  id             String          @id @default(auto()) @map("_id") @db.ObjectId
-  name           String
-  googleId       String          @unique
-  email          String          @unique
-  role           role            @default(BASIC)
-  socialAccount  Json
-  myPosts        posts[]         @relation("MyPosts")
-  favoritedPosts posts[]         @relation("FavoritedBy")
-  userpreference userpreference?
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  userPath String  @unique
+  name     String
+  photo    String?
+  role     role    @default(MEMBER)
+  // myPosts        posts[]         @relation("MyPosts")
+  // favoritedPosts posts[]         @relation("FavoritedBy")
+  // userpreference userpreference?
 }
 
-model userpreference {
-  id           String  @id @default(auto()) @map("_id") @db.ObjectId
-  emailUpdates Boolean
-  user         users   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId       String  @unique @db.ObjectId
-}
+// model userpreference {
+//   id           String  @id @default(auto()) @map("_id") @db.ObjectId
+//   emailUpdates Boolean
+//   user         users   @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId       String  @unique @db.ObjectId
+// }
 
 model contacts {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
@@ -34,27 +33,33 @@ model contacts {
 }
 
 model posts {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  content       String
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  views         Int
-  author        users     @relation("MyPosts", fields: [authorId], references: [id])
-  authorId      String    @db.ObjectId
-  favoritedBy   users?    @relation("FavoritedBy", fields: [favoritedById], references: [id])
-  favoritedById String?   @db.ObjectId
-  category      category? @relation(fields: [categoryId], references: [id])
-  categoryId    String?   @db.ObjectId
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  shortId        String   @unique
+  title          String
+  titleImage     String
+  content        String
+  description    String
+  publishedAt    DateTime
+  lastChangeAt   DateTime
+  lastChangeUser String?  @db.ObjectId
+  tags           String[]
+  bookMarked     Boolean
+  liked          Int
+  // author        users     @relation("MyPosts", fields: [authorId], references: [id])
+  // authorId      String    @db.ObjectId
+  // favoritedBy   users?    @relation("FavoritedBy", fields: [favoritedById], references: [id])
+  // favoritedById String?   @db.ObjectId
+  // category      category? @relation(fields: [categoryId], references: [id])
+  // categoryId    String?   @db.ObjectId
 }
 
-model category {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-  name  String  @unique
-  posts posts[]
-}
+// model category {
+//   id    String  @id @default(auto()) @map("_id") @db.ObjectId
+//   name  String  @unique
+//   posts posts[]
+// }
 
 enum role {
-  BASIC
-  ADMIN
+  MEMBER
+  CORETEAM
 }

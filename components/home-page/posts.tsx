@@ -1,8 +1,8 @@
 import PostsGrid from '../posts/posts-grid'
-import { PostDataType } from '../../lib/posts-util'
+import { posts as PostType } from '@prisma/client'
 import { Box, Divider, Typography } from '@mui/material'
 
-function Post(props: { posts: PostDataType[] }) {
+function Post(props: { posts: PostType[] }) {
   return (
     <section>
       <Box sx={{ p: { md: '1rem 4rem', xs: '1rem 2rem' } }}>

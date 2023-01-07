@@ -1,45 +1,91 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import { JSDOM } from 'jsdom'
+import { posts } from '@prisma/client'
+import prisma from '../prisma/prisma'
+import { HackTeamPages } from './posts-util-type'
 
-const postDirectory = path.join(process.cwd(), 'storage/posts')
+export async function fetchPostData(shortId: string) {
+  const response = await fetch(`https://hackmd.io/@gdsc-niu/${shortId}`)
+  const dom = new JSDOM(await response.text())
+  const doc = dom.window.document
+  const content = doc.getElementById('doc')?.innerHTML!
+  // const meta = doc.querySelector('meta[name="description"]')?.getAttribute('content')
+  const frontTitle = content.split('#')[0]
+  const subImageUrl = frontTitle.substring(frontTitle.indexOf('![](') + 4, frontTitle.indexOf(')'))
+  const titleImage = subImageUrl.includes('http') ? subImageUrl : ''
+  const description = frontTitle.substring(frontTitle.indexOf('&lt;!-- description[') + 20, frontTitle.indexOf('] --&gt'))
+  const bookMarked = frontTitle.includes('&lt;!-- marked --&gt')
 
-export interface PostDataType {
-  slug: string
-  title: string
-  date: string
-  image: string
-  excerpt: string
-  isPin: boolean
-  content: string
+  return {
+    title: doc.title.replace(' - HackMD', '')!,
+    titleImage: titleImage,
+    content: content,
+    description: description,
+    bookMarked: bookMarked,
+  }
+
+  //https://hackmd.io/@gdsc-news/BkYkUj4Ki
 }
 
-export function getPostFiles() {
-  return fs.readdirSync(postDirectory)
+export async function getPostData(shortId: string) {
+  const data = await prisma.posts.findFirst({ where: { shortId: shortId } })
+  if (data) {
+    return serializeData(data)
+  }
+  return null
 }
 
-export function getPostData(postIdentifier: string) {
-  const postSlug = postIdentifier.replace(/\.md$/, '')
-  const filePath = path.join(postDirectory, `${postSlug}.md`)
-  const fileContent = fs.readFileSync(filePath, 'utf8')
-  const { data, content } = matter(fileContent)
+export async function getAllPosts() {
+  const teamPages = (await (await fetch(`https://hackmd.io/api/@gdsc-niu/overview`)).json()) as HackTeamPages
+  const allPosts = await Promise.all(
+    teamPages.notes.map(async (notes) => {
+      // return await fetchPostData(notes.shortId)
+      const { title, titleImage, content, description, bookMarked } = await fetchPostData(notes.shortId)
+      const user = notes.lastchangeuser
+        ? await prisma.users.upsert({
+            where: { userPath: notes.lastchangeuser.userpath },
+            update: {},
+            create: { userPath: notes.lastchangeuser.userpath, name: notes.lastchangeuser.name, photo: notes.lastchangeuser.photo.includes('data:image/svg+xml') ? notes.lastchangeuser.photo : null },
+          })
+        : null
 
-  const postData = { slug: postSlug, ...data, content } as PostDataType
+      const data = {
+        shortId: notes.shortId,
+        title: title,
+        titleImage: titleImage,
+        content: content.split(`# ${title}`)[1],
+        description: description,
+        publishedAt: notes.publishedAt,
+        lastChangeAt: notes.lastchangeAt,
+        lastChangeUser: user?.id,
+        tags: notes.tags,
+        bookMarked: bookMarked,
+        liked: notes.likedCount,
+      }
+      //TODO check lastChangeAt
+      return await prisma.posts.upsert({
+        where: { shortId: notes.shortId },
+        update: data,
+        create: data,
+      })
+    })
+  )
 
-  return postData
+  return serializeData(allPosts)
 }
 
-export function getAllPosts() {
-  const postFiles = getPostFiles()
-  const allPosts = postFiles.map((postFile) => getPostData(postFile))
-  const sortedPots = allPosts.sort((a, b) => (a.date > b.date ? -1 : 1))
-
-  return sortedPots
+export async function getShortId() {
+  return await prisma.posts.findMany({ select: { shortId: true } })
 }
 
-export function getPinPosts() {
-  const allPosts = getAllPosts()
-  const pinPosts = allPosts.filter((post) => post.isPin)
+//TODO 繼續完成 NEWS 頁面, 想一下描述與圖片怎麼處理
+export async function getMarkedPosts() {
+  return serializeData(await prisma.posts.findMany({ where: { bookMarked: true } }))
+}
 
-  return pinPosts
+function serializeData(obj: posts[] | posts) {
+  if (Array.isArray(obj)) {
+    return JSON.parse(JSON.stringify(obj)) as posts[]
+  }
+
+  return JSON.parse(JSON.stringify(obj)) as posts
 }
