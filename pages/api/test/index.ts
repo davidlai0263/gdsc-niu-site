@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../prisma/prisma'
 import { getAllPosts } from '../../../lib/posts-util'
+import { getAllMember } from '../../../lib/about-util'
+import { getAllEvent } from '../../../lib/event-util'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   // await prisma.users.deleteMany()
@@ -46,7 +48,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   // res.status(200).json(await getPostData('BkYkUj4Ki'))
 
-  res.status(200).json(await getAllPosts())
+  res.status(200).json(await getAllEvent())
 }
 
 export default handler

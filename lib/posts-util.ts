@@ -77,7 +77,6 @@ export async function getShortId() {
   return await prisma.posts.findMany({ select: { shortId: true } })
 }
 
-//TODO 繼續完成 NEWS 頁面, 想一下描述與圖片怎麼處理
 export async function getMarkedPosts() {
   return serializeData(await prisma.posts.findMany({ where: { bookMarked: true } }))
 }

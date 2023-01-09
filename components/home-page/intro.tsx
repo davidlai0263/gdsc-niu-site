@@ -56,7 +56,7 @@ function Intro() {
           <Image src={coverPic} alt="Background Image" style={{ width: '100%', height: '80vh', objectFit: 'cover', overflow: 'hidden' }} />
         </Box>
         <Box sx={{ display: 'flex' }}>
-          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#4586F3' }} href={'/#events'} LinkComponent={Link}>
+          <ButtonBase sx={{ flexGrow: 1, height: 150, bgcolor: '#4586F3' }} href={'/event'} LinkComponent={Link}>
             <Typography variant="h5" component="h2" color="white">
               EVENTS
             </Typography>

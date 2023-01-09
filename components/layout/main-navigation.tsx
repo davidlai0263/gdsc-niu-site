@@ -15,7 +15,7 @@ import { Button } from '@mui/material'
 const pages = [
   { display: 'Home', path: '/' },
   { display: 'News', path: '/posts' },
-  { display: 'Event', path: '/' },
+  { display: 'Event', path: '/event' },
   { display: 'About', path: '/about' },
   { display: 'Contact', path: '/contact' },
 ]

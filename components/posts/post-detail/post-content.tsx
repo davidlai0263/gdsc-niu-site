@@ -13,9 +13,6 @@ function PostContent(props: { post: PostType }) {
   const imagePath = titleImage.length > 0 ? titleImage : undefined
   const customComponent: Components = {
     img: ({ alt, src }) => {
-      // if (!src?.includes('http') || !src?.includes('https')) {
-      //   src = `/images/posts/${shortId}/${src}`
-      // }
       return <img src={src} alt={alt} style={{ display: 'block', width: '100%', maxWidth: '500px' }} />
     },
     code: ({ node, inline, className, children, ...props }) => {
@@ -32,17 +29,6 @@ function PostContent(props: { post: PostType }) {
       )
     },
   }
-  //TODO Configure Next Image Domain Settings and Sizes
-  // const customComponent: Components = {
-  //   img: ({ alt, src }) =>
-  //     src?.includes('http') || src?.includes('https') ? (
-  //       <img src={src} alt={alt} width={'60%'} />
-  //     ) : (
-  //       <Box position="relative" width={'60%'} height={300}>
-  //         <Image src={`/images/posts/${slug}/${src}`} alt={alt ?? title} fill sizes="" />
-  //       </Box>
-  //     ),
-  // }
 
   return (
     <article>
